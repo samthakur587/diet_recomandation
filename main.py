@@ -8,6 +8,7 @@ from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
 from fastapi.middleware.cors import CORSMiddleware
 
+api_key = os.environ.get('OPENAI_API_KEY')
 # Set your OpenAI API key here
 os.environ['OPENAI_API_KEY'] = apikey
 
