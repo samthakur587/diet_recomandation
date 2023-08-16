@@ -6,12 +6,18 @@ from apikey import apikey
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
-
+from fastapi.middleware.cors import CORSMiddleware
 
 # Set your OpenAI API key here
 os.environ['OPENAI_API_KEY'] = apikey
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust this to your specific requirements
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Prompt templates
 breakfast_template = PromptTemplate(
