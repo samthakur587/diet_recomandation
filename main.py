@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 api_key = os.environ.get('OPENAI_API_KEY')
 # Set your OpenAI API key here
-os.environ['OPENAI_API_KEY'] = apikey
+os.environ['OPENAI_API_KEY'] = api_key
 
 app = FastAPI()
 app.add_middleware(
@@ -89,6 +89,7 @@ def recommend_meals(user_input: UserInputModel):
         else:
             return {"message": "Unable to generate recommendation."}
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
